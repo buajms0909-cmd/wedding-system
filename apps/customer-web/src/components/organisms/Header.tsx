@@ -39,11 +39,11 @@ export default function Header() {
         </button>
 
         {/* 네비게이션 메뉴 */}
-        <ul className={`w-full md:w-auto md:flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm font-medium text-slate-600 mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'}`}>
-          <li><Link href="/portfolio/snap" className="block py-2 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">SNAP</Link></li>
-          <li><Link href="/portfolio/dvd" className="block py-2 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">DVD</Link></li>
-          <li><Link href="/pricing" className="block py-2 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">비용 안내</Link></li>
-          <li><Link href="/terms" className="block py-2 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">이용 약관</Link></li>
+        <ul className={`w-full md:w-auto md:flex flex-col md:flex-row items-center gap-1.5 md:gap-6 text-sm font-medium text-slate-600 mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'}`}>
+          <li><Link href="/portfolio/snap" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">SNAP</Link></li>
+          <li><Link href="/portfolio/dvd" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">DVD</Link></li>
+          <li><Link href="/pricing" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">비용 안내</Link></li>
+          <li><Link href="/terms" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">이용 약관</Link></li>
           <li className="pt-2 md:pt-0 md:pl-4 flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
             <Link href="/reservation" className="w-full md:w-auto text-center px-5 py-2.5 md:py-2 bg-gold-500 hover:bg-gold-600 text-white rounded-lg text-xs tracking-wider font-bold transition-colors shadow-sm shadow-gold-500/20">
               예약 신청
