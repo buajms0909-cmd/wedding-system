@@ -39,7 +39,7 @@ export default function Header() {
         </button>
 
         {/* 네비게이션 메뉴 */}
-        <ul className={`w-full md:w-auto md:flex flex-col md:flex-row items-center gap-1.5 md:gap-6 text-sm font-medium text-slate-600 mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'}`}>
+        <ul className={`w-full md:w-auto md:flex flex-col md:flex-row items-center gap-1.5 md:gap-6 text-sm font-medium text-slate-600 mt-1 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'}`}>
           <li><Link href="/portfolio/snap" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">SNAP</Link></li>
           <li><Link href="/portfolio/dvd" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">DVD</Link></li>
           <li><Link href="/pricing" className="block py-1.5 md:py-0 hover:text-gold-500 transition-colors md:border-b-2 border-transparent hover:border-gold-500">비용 안내</Link></li>
