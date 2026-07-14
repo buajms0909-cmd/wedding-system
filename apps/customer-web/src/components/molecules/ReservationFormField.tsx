@@ -1,7 +1,7 @@
 /* ============================================
    예약 신청 폼 입력 필드 컴포넌트 (Molecules)
    파일명: apps/customer-web/src/components/molecules/ReservationFormField.tsx
-   역할: 라벨과 입력창이 조합된 형태의 재사용 가능한 폼 필드 컴포넌트
+   역할: 글래스모피즘 테마가 적용된 라벨 및 입력 필드 컴포넌트
    ============================================ */
 
 import React from 'react';
@@ -42,7 +42,7 @@ export default function ReservationFormField({
         onChange={onChange}
         required={required}
         placeholder={placeholder}
-        className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-lg text-stone-800 placeholder-stone-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100 transition-all text-sm"
+        className="w-full px-3.5 py-2.5 glass-input rounded-lg text-stone-800 placeholder-stone-400 focus:outline-none transition-all text-sm"
       />
     </div>
   );

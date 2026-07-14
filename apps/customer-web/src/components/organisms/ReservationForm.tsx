@@ -3,11 +3,10 @@
 /* ============================================
    예약 신청 폼 컴포넌트 (Organisms)
    파일명: apps/customer-web/src/components/organisms/ReservationForm.tsx
-   역할: 고객으로부터 예약 정보를 입력받아 Supabase 데이터베이스에 저장하는 폼 컴포넌트
+   역할: 글래스모피즘 스타일이 적용된 예약 신청 UI
    ============================================ */
 
-import { useState } from 'react';
-import { supabase } from '../../utils/supabase';
+import { useReservationForm } from '../../hooks/useReservationForm';
 import ReservationFormField from '../molecules/ReservationFormField';
 
 interface ReservationFormProps {
@@ -15,90 +14,34 @@ interface ReservationFormProps {
 }
 
 /**
- * 예약 신청 폼 컴포넌트 (Organisms)
- * @param {ReservationFormProps} props - 성공 콜백
+ * 예약 신청 폼 컴포넌트
+ * @param {ReservationFormProps} props - 성공 콜백 함수
  */
 export default function ReservationForm({ onSuccess }: ReservationFormProps) {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [location, setLocation] = useState('');
-  const [productName1, setProductName1] = useState('');
-  const [productName2, setProductName2] = useState('');
-  const [notes, setNotes] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // 자동 마스킹(포매팅) 함수
-  const formatPhone = (val: string) => {
-    const cleaned = val.replace(/\D/g, '');
-    if (cleaned.length <= 3) return cleaned;
-    if (cleaned.length <= 7) return `${cleaned.slice(0, 3)}-${cleaned.slice(3)}`;
-    return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 7)}-${cleaned.slice(7, 11)}`;
-  };
-
-  const formatDate = (val: string) => {
-    const cleaned = val.replace(/\D/g, '');
-    if (cleaned.length <= 4) return cleaned;
-    if (cleaned.length <= 6) return `${cleaned.slice(0, 4)}-${cleaned.slice(4)}`;
-    return `${cleaned.slice(0, 4)}-${cleaned.slice(4, 6)}-${cleaned.slice(6, 8)}`;
-  };
-
-  const formatTime = (val: string) => {
-    const cleaned = val.replace(/\D/g, '');
-    if (cleaned.length <= 2) return cleaned;
-    return `${cleaned.slice(0, 2)}:${cleaned.slice(2, 4)}`;
-  };
-
-  const checkPhoneWarning = (val: string) => {
-    if (!val) return false;
-    const cleaned = val.replace(/\D/g, '');
-    if (cleaned.length < 3) return false;
-    if (!cleaned.startsWith('010')) return true;
-    if (cleaned.length >= 7 && cleaned.length < 11) return true;
-    return false;
-  };
-
-  /**
-   * 예약 데이터 제출 처리 핸들러
-   * @param {React.FormEvent} e - 폼 이벤트
-   */
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-    try {
-      // 1. 비회원 예약 허용 (로그인 체크 삭제)
-      
-      // 2. 예약 데이터 Supabase 저장
-      const { error: insertError } = await supabase.from('reservations').insert({
-        customer_name: name,
-        customer_phone: phone,
-        wedding_date: date,
-        wedding_time: time,
-        location: location,
-        product_name: [productName1, productName2].filter(Boolean).join(', '),
-        status: 'pending',
-        notes: notes,
-      });
-
-      if (insertError) {
-        throw insertError;
-      }
-
-      // 3. 성공 콜백 호출
-      onSuccess(name, phone);
-    } catch (error: any) {
-      console.error('예약 제출 중 오류 발생:', error.message);
-      alert('예약 신청 중 오류가 발생했습니다. 다시 시도해 주세요.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const {
+    name,
+    setName,
+    phone,
+    setPhone,
+    date,
+    setDate,
+    time,
+    setTime,
+    location,
+    setLocation,
+    productName1,
+    setProductName1,
+    productName2,
+    setProductName2,
+    notes,
+    setNotes,
+    isSubmitting,
+    checkPhoneWarning,
+    handleSubmit,
+  } = useReservationForm({ onSuccess });
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-5">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto glass-card p-8 rounded-3xl shadow-lg space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <ReservationFormField
           label="신랑/신부 성함"
@@ -115,11 +58,11 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
             id="customer_phone"
             type="tel"
             value={phone}
-            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            onChange={(e) => setPhone(e.target.value)}
             required
             placeholder="010-0000-0000"
           />
-          {checkPhoneWarning(phone) && (
+          {checkPhoneWarning() && (
             <p className="text-[10px] text-rose-500 font-semibold px-1">⚠️ 번호를 확인해주세요</p>
           )}
         </div>
@@ -131,7 +74,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
           id="wedding_date"
           type="text"
           value={date}
-          onChange={(e) => setDate(formatDate(e.target.value))}
+          onChange={(e) => setDate(e.target.value)}
           required
           placeholder="2026-06-05"
         />
@@ -140,7 +83,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
           id="wedding_time"
           type="text"
           value={time}
-          onChange={(e) => setTime(formatTime(e.target.value))}
+          onChange={(e) => setTime(e.target.value)}
           required
           placeholder="14:00"
         />
@@ -164,7 +107,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
             value={productName1}
             onChange={(e) => setProductName1(e.target.value)}
             required
-            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-sm text-slate-800 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all"
+            className="w-full px-4 py-2.5 glass-input rounded-lg text-slate-800 transition-all text-sm font-medium"
           >
             <option value="">원하시는 상품 선택</option>
             <option value="스냅">스냅</option>
@@ -177,7 +120,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
             id="product_name_2"
             value={productName2}
             onChange={(e) => setProductName2(e.target.value)}
-            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-sm text-slate-800 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all"
+            className="w-full px-4 py-2.5 glass-input rounded-lg text-slate-800 transition-all text-sm font-medium"
           >
             <option value="">추가 안함</option>
             <option value="스냅">스냅</option>
@@ -193,7 +136,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
-          className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-sm text-slate-800 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all resize-none custom-scrollbar"
+          className="w-full px-4 py-2.5 glass-input rounded-lg text-slate-800 transition-all text-sm resize-none custom-scrollbar font-medium"
           placeholder="특별히 요청하고 싶으신 사항이나 추가 메모가 있다면 편하게 적어주세요."
         />
       </div>
@@ -201,7 +144,7 @@ export default function ReservationForm({ onSuccess }: ReservationFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3.5 bg-gold-500 hover:bg-gold-600 text-white font-medium rounded-sm shadow-md shadow-gold-500/20 transition-all duration-300 disabled:opacity-50 mt-4"
+        className="w-full py-4 glass-btn-primary font-bold tracking-wider rounded-xl transition-all duration-300 disabled:opacity-50 mt-4"
       >
         {isSubmitting ? '신청 처리 중...' : '예약 신청하기'}
       </button>

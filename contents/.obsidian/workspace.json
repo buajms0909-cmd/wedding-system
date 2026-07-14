@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_개발방향.md",
+                "file": "update-logs/02_업데이트 내용.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01_개발방향"
+              "title": "02_업데이트 내용"
             }
           }
         ],
@@ -200,10 +200,11 @@
   },
   "active": "925b132d2b2a4f6e",
   "lastOpenFiles": [
-    "Untitled.canvas",
-    "01_개발방향.md",
-    "README.md",
     "update-logs/2026-06-05_UI디자인수정.md",
+    "update-logs/2026-06-05_오후작업.md",
+    "01_개발방향.md",
+    "Untitled.canvas",
+    "README.md",
     "portfolio/2026-06-05.md",
     "update-logs",
     "portfolio/02_업데이트 내용.md",

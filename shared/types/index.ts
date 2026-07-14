@@ -42,7 +42,8 @@ export interface Attendance {
   id: string;
   photographer_id: string;
   reservation_id: string | null;
-  check_in_time: string;
-  check_out_time: string | null;
+  departure_time: string | null;
+  arrival_time: string | null;
+  end_time: string | null;
   created_at: string;
 }

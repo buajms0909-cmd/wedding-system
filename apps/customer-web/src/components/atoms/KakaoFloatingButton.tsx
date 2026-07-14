@@ -6,7 +6,7 @@ export default function KakaoFloatingButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <Link
-        href="http://pf.kakao.com/_xdmlGX"
+        href={process.env.NEXT_PUBLIC_KAKAO_CHANNEL_URL || 'http://pf.kakao.com/_xdmlGX'}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-14 h-14 bg-[#FEE500] text-[#000000] rounded-full shadow-lg hover:scale-110 transition-transform duration-300"

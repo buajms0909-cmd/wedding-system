@@ -18,14 +18,19 @@
   ],
   "dvd": [
     {
-      "title": "시그니처 하이라이트 영상",
-      "youtubeId": "dQw4w9WgXcQ",
-      "description": "영화같은 색감과 스토리텔링이 담긴 프리미엄 본식 DVD입니다."
+      "title": "본식 프리미엄 DVD 하이라이트 1",
+      "youtubeId": "M5RYf68ZTYE",
+      "description": "두 분의 찬란한 하루를 담은 시네마틱 웨딩 필름입니다."
     },
     {
-      "title": "감성 다큐 웨딩 필름",
-      "youtubeId": "dQw4w9WgXcQ",
-      "description": "꾸밈없는 자연스러운 감동의 순간을 다큐멘터리 형식으로 담아냈습니다."
+      "title": "본식 프리미엄 DVD 하이라이트 2",
+      "youtubeId": "s2u-n46hM8k",
+      "description": "아름다운 빛과 감동적인 스토리를 담아낸 4K 본식 영상입니다."
+    },
+    {
+      "title": "본식 프리미엄 DVD 하이라이트 3",
+      "youtubeId": "i-lIu9dmt5c",
+      "description": "소중한 사람들의 축복 속에서 빛나는 가장 아름다운 순간을 기록했습니다."
     }
   ]
 }
