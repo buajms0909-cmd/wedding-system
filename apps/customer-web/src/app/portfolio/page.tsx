@@ -50,14 +50,15 @@ export default function PortfolioPage() {
 
         {/* 그리드 콘텐츠 */}
         {activeTab === 'snap' ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2">
+          <div className="columns-2 md:columns-3 gap-1 sm:gap-2 space-y-1 sm:space-y-2">
             {portfolioData.snap.map((item, idx) => (
-              <div key={`snap-${idx}`} className="relative w-full aspect-square overflow-hidden bg-stone-200">
+              <div key={`snap-${idx}`} className="relative w-full overflow-hidden bg-stone-200 break-inside-avoid">
                 <Image
                   src={(item as any).imageUrl}
                   alt={item.title}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  width={1080}
+                  height={1350}
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
               </div>
