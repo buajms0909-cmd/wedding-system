@@ -58,7 +58,7 @@ export default function TermsPage() {
               제 4 조 (데이터 보관 및 초상권)
             </h3>
             <ul className="list-disc pl-8 text-stone-600 space-y-2.5 font-medium">
-              <li>촬영된 원본 데이터는 예식일 기준 3개월간 보관되며, 이후 자동 파기됩니다.</li>
+              <li>촬영된 원본 데이터는 예식일 기준 6개월간 보관되며, 이후 자동 파기됩니다.</li>
               <li>스튜디오는 촬영된 결과물을 자사 홈페이지 및 SNS 포트폴리오용으로 활용할 수 있습니다. <span className="text-orange-600 font-bold bg-orange-50/80 border border-orange-200/50 px-2 py-0.5 rounded-lg">(마케팅 활용 동의 시 5만원 할인 적용)</span></li>
             </ul>
           </section>

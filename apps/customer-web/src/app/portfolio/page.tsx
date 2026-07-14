@@ -8,6 +8,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import PortfolioCard from '../../components/molecules/PortfolioCard';
 import portfolioData from '../../../../../contents/portfolio/portfolio.json';
 
@@ -17,6 +19,7 @@ import portfolioData from '../../../../../contents/portfolio/portfolio.json';
  */
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState<'snap' | 'dvd'>('snap');
+  const [index, setIndex] = useState(-1);
 
   return (
     <main className="min-h-screen bg-stone-50 py-12 px-6">
@@ -50,15 +53,20 @@ export default function PortfolioPage() {
 
         {/* 그리드 콘텐츠 */}
         {activeTab === 'snap' ? (
-          <div className="columns-2 md:columns-3 gap-1 sm:gap-2 space-y-1 sm:space-y-2">
+          <div className="columns-2 md:columns-3 gap-1 sm:gap-2 space-y-1 sm:space-y-2" onContextMenu={(e) => e.preventDefault()}>
             {portfolioData.snap.map((item, idx) => (
-              <div key={`snap-${idx}`} className="relative w-full overflow-hidden bg-stone-200 break-inside-avoid">
+              <div 
+                key={`snap-${idx}`} 
+                onClick={() => setIndex(idx)}
+                className="relative w-full overflow-hidden bg-stone-200 break-inside-avoid cursor-pointer select-none"
+                style={{ WebkitTouchCallout: 'none' }}
+              >
                 <Image
                   src={(item as any).imageUrl}
                   alt={item.title}
                   width={1080}
                   height={1350}
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 pointer-events-none"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
               </div>
@@ -71,6 +79,14 @@ export default function PortfolioPage() {
             ))}
           </div>
         )}
+        
+        {/* 라이트박스 뷰어 (스냅 이미지용) */}
+        <Lightbox
+          index={index}
+          open={index >= 0}
+          close={() => setIndex(-1)}
+          slides={portfolioData.snap.map(item => ({ src: (item as any).imageUrl }))}
+        />
       </div>
     </main>
   );

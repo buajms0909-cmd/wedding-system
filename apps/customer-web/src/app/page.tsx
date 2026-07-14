@@ -22,8 +22,9 @@ export default function HomePage() {
       <div className="absolute top-[40%] right-[20%] w-[40%] h-[40%] rounded-full bg-white/60 blur-[90px] pointer-events-none -z-10" />
       
       {/* 히어로 영역 - 글래스모피즘 카드 */}
-      <section className="max-w-xl w-full z-10 glass-card p-10 md:p-14 rounded-3xl text-center space-y-10 animate-fade-in-right-1">
-        <div className="space-y-4">
+      <section className="max-w-xl w-full z-10 glass-card p-10 md:p-14 rounded-3xl text-center space-y-12 animate-fade-in-right-1">
+        {/* 텍스트 영역 (간격 균등화) */}
+        <div className="space-y-8">
           <h2 className="text-xs md:text-sm font-bold tracking-[0.25em] text-orange-500 uppercase">
             GOLDEN TAKE STUDIO
           </h2>
@@ -31,15 +32,14 @@ export default function HomePage() {
             당신의 가장 찬란한 순간<br />
             <span className="text-orange-500 mt-2 sm:mt-3 inline-block font-extrabold">영원으로 간직되다</span>
           </h1>
+          <p className="text-stone-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-sm mx-auto font-serif italic break-keep text-balance pt-2">
+            생애 단 한 번뿐인 순간을<br className="hidden sm:block" />
+            가장 아름답고 자연스럽게 담아드립니다.
+          </p>
         </div>
 
-        <p className="text-stone-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-sm mx-auto font-serif italic break-keep text-balance">
-          생애 단 한 번뿐인 순간을<br className="hidden sm:block" />
-          가장 아름답고 자연스럽게 담아드립니다.
-        </p>
-
         {/* 액션 버튼 그룹 */}
-        <div className="flex flex-col gap-3.5 pt-4">
+        <div className="flex flex-col gap-3.5">
           <a
             href={kakaoUrl}
             target="_blank"
