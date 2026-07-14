@@ -1,19 +1,14 @@
 {
   "snap": [
     {
-      "title": "봄날의 호텔 웨딩",
-      "youtubeId": "dQw4w9WgXcQ",
-      "description": "자연광이 스며드는 따뜻한 색감의 시그니처 호텔 스냅입니다."
+      "title": "시그니처 하우스 웨딩 스냅",
+      "imageUrl": "/images/snap/snap_01.jpeg",
+      "description": "생동감 넘치는 현장의 숨결을 자연스러운 시선으로 담아냅니다."
     },
     {
-      "title": "야외 하우스 웨딩",
-      "youtubeId": "dQw4w9WgXcQ",
-      "description": "그리너리한 무드를 가득 담은 야외 스냅입니다."
-    },
-    {
-      "title": "클래식 채플 웨딩",
-      "youtubeId": "dQw4w9WgXcQ",
-      "description": "경건하고 성스러운 분위기의 채플 웨딩 본식 스냅입니다."
+      "title": "클래식 채플 본식 스냅",
+      "imageUrl": "/images/snap/snap_02.jpeg",
+      "description": "경건한 순간의 감동을 시네마틱한 톤으로 가장 아름답게 기록합니다."
     }
   ],
   "dvd": [
