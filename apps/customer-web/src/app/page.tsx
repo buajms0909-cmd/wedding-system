@@ -40,12 +40,14 @@ export default function HomePage() {
 
         {/* 액션 버튼 그룹 */}
         <div className="flex flex-col gap-3.5 pt-4">
-          <Link
-            href="/reservation"
+          <a
+            href={kakaoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full py-4 glass-btn-primary text-center font-extrabold tracking-wider rounded-xl transition-all duration-300"
           >
             촬영 예약 신청
-          </Link>
+          </a>
           
           <a
             href={kakaoUrl}
