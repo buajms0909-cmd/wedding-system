@@ -51,10 +51,10 @@ export default function PortfolioPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {activeTab === 'snap'
             ? portfolioData.snap.map((item, idx) => (
-                <PortfolioCard key={`snap-${idx}`} title={item.title} youtubeId={item.youtubeId} imageUrl={item.imageUrl} description={item.description} />
+                <PortfolioCard key={`snap-${idx}`} title={item.title} imageUrl={(item as any).imageUrl} description={item.description} />
               ))
             : portfolioData.dvd.map((item, idx) => (
-                <PortfolioCard key={`dvd-${idx}`} title={item.title} youtubeId={item.youtubeId} description={item.description} />
+                <PortfolioCard key={`dvd-${idx}`} title={item.title} youtubeId={(item as any).youtubeId} description={item.description} />
               ))}
         </div>
       </div>
