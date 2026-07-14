@@ -34,8 +34,8 @@ export default function HomePage() {
         </div>
 
         <p className="text-stone-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-sm mx-auto font-serif italic break-keep text-balance">
-          따뜻한 자연광의 색감과 감각적인 영화적 구도로<br className="hidden sm:block" />
-          두 분만의 특별한 웨딩 스토리를 아름답게 담아냅니다.
+          생동감 넘치는 현장의 숨결과 시네마틱한 영상미로,<br className="hidden sm:block" />
+          가장 벅차고 찬란한 그날의 감동을 한 편의 영화처럼 기록합니다.
         </p>
 
         {/* 액션 버튼 그룹 */}
