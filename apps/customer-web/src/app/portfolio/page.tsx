@@ -7,6 +7,7 @@
    ============================================ */
 
 import { useState } from 'react';
+import Image from 'next/image';
 import PortfolioCard from '../../components/molecules/PortfolioCard';
 import portfolioData from '../../../../../contents/portfolio/portfolio.json';
 
@@ -48,15 +49,27 @@ export default function PortfolioPage() {
         </div>
 
         {/* 그리드 콘텐츠 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeTab === 'snap'
-            ? portfolioData.snap.map((item, idx) => (
-                <PortfolioCard key={`snap-${idx}`} title={item.title} imageUrl={(item as any).imageUrl} description={item.description} />
-              ))
-            : portfolioData.dvd.map((item, idx) => (
-                <PortfolioCard key={`dvd-${idx}`} title={item.title} youtubeId={(item as any).youtubeId} description={item.description} />
-              ))}
-        </div>
+        {activeTab === 'snap' ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2">
+            {portfolioData.snap.map((item, idx) => (
+              <div key={`snap-${idx}`} className="relative w-full aspect-square overflow-hidden bg-stone-200">
+                <Image
+                  src={(item as any).imageUrl}
+                  alt={item.title}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioData.dvd.map((item, idx) => (
+              <PortfolioCard key={`dvd-${idx}`} title={item.title} youtubeId={(item as any).youtubeId} description={item.description} />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
